@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-// ---------------------------------------------------------
-// EDITAR LIVRO — Página /livros/editar/:id
-// - Mesmo layout da página "Adicionar Livro"
-// - Campos preenchidos automaticamente
-// - Após salvar, permanece na página (2B)
-// - Validação simples e simulada
-// ---------------------------------------------------------
+// Logo padrão do sistema
+import Logo from "../assets/logotipo.png";
 
-const LOGO_URL = "/mnt/data/Tela Login.png"; // imagem enviada na sessão
+/* ---------------------------------------------------------
+   EDITAR LIVRO — Página /livros/editar/:id
+   - Mesmo layout da página "Adicionar Livro"
+   - Cabeçalho igual ao de "Livros" e "Adicionar Livro"
+   - Campos preenchidos automaticamente
+   - Após salvar, permanece na página (Regra 2B)
+   - Validação simples e simulada
+--------------------------------------------------------- */
 
 export default function EditarLivro() {
   const { id } = useParams();
@@ -29,16 +31,14 @@ export default function EditarLivro() {
   const [errors, setErrors] = useState({});
 
   // ---------------------------------------------------------
-  // Simulação de carregamento de dados (substituir pelo backend)
+  // Simulação de carregamento de dados
   // ---------------------------------------------------------
   useEffect(() => {
     async function loadBook() {
       setLoading(true);
 
-      // Simulação de delay
       await new Promise((r) => setTimeout(r, 600));
 
-      // Mock de dados (futuro: buscar via GET /livros/:id no backend)
       const mockData = {
         id,
         isbn: "978-8551003427",
@@ -63,8 +63,8 @@ export default function EditarLivro() {
   // ---------------------------------------------------------
   function validate() {
     const e = {};
-    if (!titulo.trim()) e.titulo = "Título é obrigatório.";
     if (!isbn.trim()) e.isbn = "ISBN é obrigatório.";
+    if (!titulo.trim()) e.titulo = "Título é obrigatório.";
     if (!genero.trim()) e.genero = "Gênero é obrigatório.";
     if (descricao && descricao.trim().length < 10)
       e.descricao = "Descrição deve conter pelo menos 10 caracteres.";
@@ -84,18 +84,15 @@ export default function EditarLivro() {
 
     setSaving(true);
 
-    // Simula envio
     await new Promise((r) => setTimeout(r, 900));
-
-    // Futuro:
-    // await fetch(`/api/livros/${id}`, { method: "PUT", body: JSON.stringify({ isbn, titulo, descricao, genero }) });
 
     setSaving(false);
     setSuccess("Alterações salvas com sucesso!");
-
-    // Não redireciona (2B)
   }
 
+  // ---------------------------------------------------------
+  // LOADING
+  // ---------------------------------------------------------
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
@@ -108,33 +105,42 @@ export default function EditarLivro() {
     <div className="min-h-screen w-full bg-[#EEF3F8]">
 
       {/* ---------------------------------------------------------
-         HEADER
+         CABEÇALHO PADRONIZADO
       --------------------------------------------------------- */}
-      <header className="max-w-[1100px] mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <img src={LOGO_URL} alt="LibraTech" className="w-[56px] md:w-[70px]" />
-          <div>
-            <div className="font-rajdhani font-semibold text-[18px] md:text-[20px] text-[#2D2D2D]">
-              Editar Livro
-            </div>
-            <div className="text-xs text-[#6B7280]">
-              Atualize as informações do livro (ID {id})
-            </div>
+      <header className="w-full bg-gradient-to-r from-[#1D3153] to-[#0a58ca] shadow-md py-4 px-6 flex items-center justify-between">
+
+        {/* LOGO + TEXTO */}
+        <div className="flex items-center gap-2 w-14">
+          <img src={Logo} alt="Logo" className="w-[60px]" />
+
+          <div className="flex flex-col leading-tight">
+            <span className="text-white font-semibold text-sm">LibraTech</span>
+            <span className="text-white text-[11px]">Sistema de livros</span>
           </div>
         </div>
 
+        {/* TÍTULO CENTRALIZADO */}
+        <h1 className="font-audiowide text-white text-2xl tracking-widest">
+          EDITAR LIVRO
+        </h1>
+
+        {/* BOTÃO VOLTAR */}
         <button
           onClick={() => navigate("/livros")}
-          className="bg-white border border-gray-200 text-[#374151] px-3 py-2 rounded-md hover:bg-gray-50 transition"
+          className="
+            bg-white text-[#1D3153] font-semibold
+            px-4 py-1 rounded-md shadow
+            hover:bg-gray-200 transition
+          "
         >
-          Voltar à lista
+          Voltar
         </button>
       </header>
 
       {/* ---------------------------------------------------------
          FORMULÁRIO — CARD BRANCO (2 COLUNAS)
       --------------------------------------------------------- */}
-      <main className="max-w-[1100px] mx-auto px-6 pb-12">
+      <main className="max-w-[1100px] mx-auto px-6 pb-12 mt-10">
         <div className="bg-white rounded-xl shadow-md p-6">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 

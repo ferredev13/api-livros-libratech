@@ -106,7 +106,7 @@ export default function Livros() {
     <div className="min-h-screen bg-[#EEF3F8]">
 
       {/* ---------------------------------------------------------
-         CABEÇALHO — 
+         CABEÇALHO —
       --------------------------------------------------------- */}
       <header className="w-full bg-gradient-to-r from-[#1D3153] to-[#0a58ca] shadow-md py-3 px-6 flex items-center justify-between">
 
@@ -142,6 +142,20 @@ export default function Livros() {
          CONTEÚDO
       --------------------------------------------------------- */}
       <main className="max-w-[1200px] mx-auto px-6 pb-12">
+
+        {/* BOTÃO + NOVO (RESTAURADO) */}
+        <div className="flex justify-end mt-6">
+          <button
+            onClick={handleAdd}
+            className="
+              bg-[#1D3153] text-white
+              px-4 py-2 rounded-md shadow
+              hover:bg-[#0f2340] transition
+            "
+          >
+            + Novo
+          </button>
+        </div>
 
         {/* BUSCA + FILTROS */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-10 mb-6">
