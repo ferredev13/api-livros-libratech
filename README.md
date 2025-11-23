@@ -143,7 +143,7 @@ http://localhost:5173
 > Adicione imagens reais após gerar screenshots:
 
 <p align="center">
- <img src="frontend-react/src/assets/tela_login.png" alt="Banner do Projeto" width="160">
+ <img src="frontend-react/src/assets/tela_dashboard.jpg" alt="Banner do Projeto" width="35%">
 </p>
 
 ---
