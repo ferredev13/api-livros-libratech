@@ -143,9 +143,7 @@ http://localhost:5173
 > Adicione imagens reais após gerar screenshots:
 
 <p align="center">
-  <img src="screenshots/livros.png" width="100%" />
-  <img src="screenshots/adicionar.png" width="100%" />
-  <img src="screenshots/editar.png" width="100%" />
+  <<img src="frontend-react/src/assets/Tela_Login.png" alt="Banner do Projeto" width="50">
 </p>
 
 ---
