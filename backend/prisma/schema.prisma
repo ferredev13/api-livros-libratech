@@ -1,0 +1,34 @@
+// ---------------------------------------------------------
+// PRISMA SCHEMA — LibraTech
+// Revisado para login, cadastro, CRUD de livros, auditoria
+// ---------------------------------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  email       String   @unique
+  senhaHash   String
+
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Livro {
+  id           Int      @id @default(autoincrement())
+  isbn         String
+  titulo       String
+  descricao    String
+  genero       String
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
