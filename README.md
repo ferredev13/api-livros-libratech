@@ -140,10 +140,10 @@ http://localhost:5173
 
 ## ▶ Preview da Aplicação
 
-> Adicione imagens reais após gerar screenshots:
-
 <p align="center">
+ <img src="frontend-react/src/assets/tela_login.jpg" alt="Banner do Projeto" width="35%">
  <img src="frontend-react/src/assets/tela_dashboard.jpg" alt="Banner do Projeto" width="35%">
+ <img src="frontend-react/src/assets/tela_livros.jpg" alt="Banner do Projeto" width="35%"> 
 </p>
 
 ---
